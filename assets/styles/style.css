@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.barra{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.figure-img{
+    display: flex;
+    padding-left: 10%;
+    padding-top: 5%;
+}
+
+.navbar-nav{
+    display: flex;
+    font-size: 20px;
+}
+.container-fluid .collapse{
+    display: flex;
+    justify-content: flex-end;
+}
+.nav-item{
+    display: flex;
+    background-color: #D90368;
+    margin: 15px;
+    width: 112px;
+    text-align: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-weight: 500; 
+}
+.nav-link{
+    display: flex;
+    align-items: center;
+}
