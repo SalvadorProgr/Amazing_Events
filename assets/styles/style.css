@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* max-height: 100vh; */
 }
 
 .barra{
@@ -37,3 +38,33 @@
     display: flex;
     align-items: center;
 }
+.below-bar{
+    display: flex;
+    width: 100%;
+    background:#fc7cb9;
+    justify-content: center;
+    justify-content: space-between;
+}
+.title-page{
+    padding: 10px;
+    font-weight: 700;
+    font-size: 50px;
+
+}
+.btn{
+    height: auto;
+    border: none;
+    font-size: 50px;
+    font-weight: 700;
+}
+.carousel-columna{
+    display: flex;
+    flex-direction: row;
+}
+footer{
+    background: #6a123d;
+    max-height: 10vh;
+}
+
+
+
