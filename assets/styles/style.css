@@ -4,7 +4,6 @@
     box-sizing: border-box;
     /* max-height: 100vh; */
 }
-
 .barra{
     display: flex;
     justify-content: space-between;
@@ -38,33 +37,30 @@
     display: flex;
     align-items: center;
 }
-.below-bar{
+.bar-home{
     display: flex;
-    width: 100%;
-    background:#fc7cb9;
-    justify-content: center;
     justify-content: space-between;
+    height: 70px;
+    align-items: center;
+    background-image: url("/assets/img/salon-fiesta.jpg");
 }
-.title-page{
-    padding: 10px;
-    font-weight: 700;
-    font-size: 50px;
-
-}
-.btn{
-    height: auto;
-    border: none;
+main h2{
     font-size: 50px;
     font-weight: 700;
+    color: white;
+    text-shadow: 5px 5px 5px black;
 }
-.carousel-columna{
-    display: flex;
-    flex-direction: row;
+i{
+    color: rgb(247, 247, 247);
+    font-size: 70px;
+    text-shadow: 5px 5px 5px black;
 }
 footer{
     background: #6a123d;
     max-height: 10vh;
 }
+
+
 
 
 
