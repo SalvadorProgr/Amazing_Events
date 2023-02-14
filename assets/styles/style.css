@@ -60,13 +60,13 @@ main h2{
 
 .col-4{
     display: flex;
+    flex-direction: row;
 }
 .checks-and-search{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 15px 0px 15px 35px;
-   
 }
 .below-bar-home{
     margin-left: 35px;
@@ -107,6 +107,53 @@ footer i{
 }
 h2{
     font-size: 45px !important;
+}
+/* desde aqui formulario */
+
+.formulario-contacto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+   
+}
+.formulario-contacto .btn{
+    display: flex;
+    width: 80px;
+    background: #a493e6;
+    border: none;
+}
+/* desde aqui details */
+
+.card-details{
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+    border: 1px solid black;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px 15px 20px;
+    border: 1px solid black;
+}
+.image-details .card-img-top{
+    width: 400px;
+    height: 300px;
+    border: 2px solid black;
+    box-shadow: 18px 10px 20px 8px ;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.card-body p{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.card-body p::first-letter{
+    font-weight: 700;
+    color: #D90368;
 }
 
 
