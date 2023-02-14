@@ -2,7 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* max-height: 100vh; */
+}
+body{
+    background: #cdcad8;
 }
 .barra{
     display: flex;
@@ -63,11 +65,12 @@ main h2{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding-top: 10px;
+    padding: 15px 0px 15px 35px;
    
 }
 .below-bar-home{
     margin-left: 35px;
+    align-content: center;
 }
 .form-control{
     width: 350px;
@@ -81,15 +84,32 @@ main h2{
 }
 .cards-group-armado{
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 .card-img-top{
     width: 206px;
     height: 137px;
 }
-footer{
-    background: #6a123d;
-    max-height: 10vh;
+.price-and-button p{
+    font-weight: 700;
 }
+footer{
+    display: flex;
+    background:#CDCAD8;
+    max-height: 10vh;
+    justify-content: space-around;
+    height: 50px;
+    padding: 40px 20px;
+    align-items: center;
+}
+footer i{
+    font-size: 35px;
+}
+h2{
+    font-size: 45px !important;
+}
+
+
 
 
 
