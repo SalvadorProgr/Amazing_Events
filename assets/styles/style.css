@@ -79,7 +79,13 @@ main h2{
     font-size: 20px;
     padding-left: 15px;
 }
-
+.cards-group-armado{
+    flex-wrap: wrap;
+}
+.card-img-top{
+    width: 206px;
+    height: 137px;
+}
 footer{
     background: #6a123d;
     max-height: 10vh;
