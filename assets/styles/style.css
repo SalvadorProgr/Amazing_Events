@@ -55,7 +55,7 @@ body{
     justify-content: space-between;
     height: 70px;
     align-items: center;
-    background-image: url("/assets/img/salon-fiesta.jpg");
+    background-image: url("../img/salon-fiesta.jpg");
 }
 main h2{
     font-size: 50px;
