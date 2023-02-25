@@ -11,7 +11,7 @@ for (const event of tarjetas.events) {
         </p>
         <div class="price-and-button d-flex justify-content-between">
           <p class="card-text">PRICE $ ${event.price}</p>
-          <a href="./details.html" class="btn" style="background-color: #a493e6"><i>VAMOS</i><i class="bi bi-camera-reels"></i></a>
+          <a href="./details.html" class="btn" style="background-color: #a493e6"><i>VAMOS</i></i></a>
         </div>
         `
   fragment.appendChild(cardUnica)
