@@ -1,8 +1,15 @@
 
+let fechaActual = tarjetas.currentDate;
+let fechaActualDate = new Date(fechaActual);
+
 let divContainerEvents = document.getElementById('div-container-events');
 let fragment = document.createDocumentFragment()
 for (const event of tarjetas.events) {
-  
+  let fechaEvento = event.date;
+  let fechaEventoDate = new Date(fechaEvento)
+
+  if(fechaEventoDate < fechaActualDate){
+
   let cardUnica = document.createElement('div')
   cardUnica.classList.add('card', 'text-center')
   cardUnica.innerHTML = `<img src="${event.image}" class="card-img-top" alt="..." />
@@ -17,5 +24,6 @@ for (const event of tarjetas.events) {
         </div>
         `
   fragment.appendChild(cardUnica)
+  }
 }
 divContainerEvents.appendChild(fragment)
