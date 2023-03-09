@@ -8,11 +8,11 @@ for (const event of tarjetas.events) {
   let fechaEvento = event.date;
   let fechaEventoDate = new Date(fechaEvento)
 
-  if(fechaEventoDate < fechaActualDate){
+  if (fechaEventoDate < fechaActualDate) {
 
-  let cardUnica = document.createElement('div')
-  cardUnica.classList.add('card', 'text-center')
-  cardUnica.innerHTML = `<img src="${event.image}" class="card-img-top" alt="..." />
+    let cardUnica = document.createElement('div')
+    cardUnica.classList.add('card', 'text-center')
+    cardUnica.innerHTML = `<img src="${event.image}" class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title">${event.name}</h5>
         <p class="card-text">
@@ -20,10 +20,10 @@ for (const event of tarjetas.events) {
         </p>
         <div class="price-and-button d-flex justify-content-between">
           <p class="card-text">PRICE $ ${event.price}</p>
-          <a href="./details.html" class="btn" style="background-color: #a493e6"><i>VAMOS</i></i></a>
+          <a href="./details.html?_id=${event._id}" class="btn" style="background-color: #a493e6"><i>VAMOS</i></i></a>
         </div>
         `
-  fragment.appendChild(cardUnica)
+    fragment.appendChild(cardUnica)
   }
 }
 divContainerEvents.appendChild(fragment)
