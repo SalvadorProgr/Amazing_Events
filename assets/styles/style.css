@@ -61,6 +61,7 @@ main h2 {
   color: white;
   text-shadow: 5px 5px 5px black;
 }
+
 .bar-home i {
   color: rgb(247, 247, 247);
   font-size: 70px;
@@ -122,7 +123,8 @@ footer .bi-instagram {
   color: #f703b2;
 }
 h2 {
-  font-size: 45px !important;
+  font-size: 25px !important;
+  padding: 3px 20px 0px 20px;
 }
 /* desde aqui formulario */
 
@@ -203,7 +205,7 @@ table {
 }
 /* desde aca las cards dinamicas */
 
-#div-container-events {
+#divContainerEvents {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
