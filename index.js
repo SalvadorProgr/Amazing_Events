@@ -1,87 +1,176 @@
-let divContainerEvents = document.getElementById('divContainerEvents');
+let url = 'https://mindhub-xj03.onrender.com/api/amazing'
 
-// desde acá los checkboxes
+let inputChecks = [];
+let inputText = "";
 
-// let checks = document.getElementById('checks')
-// checks.addEventListener('click', imprimirPorConsola)
-// function imprimirPorConsola(e) {
-//   console.log(e.target)
-// }
-let listaDeEventos = []
-let arrayDeCategory = tarjetas.events.map(evento => {
-  if (!listaDeEventos.includes(evento.category))
-    listaDeEventos.push(evento.category)
-})
-// console.log(listaDeEventos)
-let fragment = document.createDocumentFragment()
-for (const category of listaDeEventos) {
-  let div = document.createElement('div')
-  div.innerHTML = `
-  <div class="form-check">
-  <label class="form-check-label" for="flexCheckDefault">
-    ${category}
-  <input class="form-check-input" type="checkbox" value="${category}" id="">
-  </label>
-</div>
-  `
-  fragment.appendChild(div)
-}
-checks.appendChild(fragment)
+async function bringData() {
+  try {
+    // traigo todo de la API
+    const response = await fetch(url)
+    const data = await response.json()
+    const dataEvents = await data.events
+    console.log(dataEvents);
 
-let checkboxes = document.querySelectorAll('input[type=checkbox]');
-// console.log(checkboxes);
+    // llamo a la función que me imprime las tarjetas
+    cardsCreate(dataEvents, "divContainerEvents");
 
-checkboxes.forEach(checkbox => {
-  checkbox.addEventListener('change', verificarChequeado)
-})
+    // traigo los checkboxes
+    const cuadraditos = document.getElementById('checks');
+    cuadraditos.appendChild(checkboxCreate(dataEvents));
 
-function verificarChequeado() {
-  let inputChequeado = Array.from(checkboxes).filter(checkbox => checkbox.checked)
-  let inputMapeados = inputChequeado.map(input => input.value);
+    // hago funcional los checkboxes (filtro 1)
+    let checkboxes = document.querySelectorAll("input[type=checkbox]");
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener("change", filterCheckbox);
+    });
 
-  let eventsFiltrados
-  if (inputMapeados.length == 0) {
-    eventsFiltrados = tarjetas.events
-  } else {
-    eventsFiltrados = tarjetas.events.filter(evento => inputMapeados.includes(evento.category));
+    function filterCheckbox() {
+      inputChecks = Array.from(checkboxes)
+        .filter((checkbox) => checkbox.checked)
+        .map((value) => value.value);
+      doubleFilter(dataEvents);
+    }
+
+    // hago funcional el search (filtro 2)
+    let searchNav = document.getElementById("inputForm");
+
+    searchNav.addEventListener("keyup", (e) => {
+      inputText = e.target.value;
+      doubleFilter(dataEvents);
+    });
+
+    // hago funcional el filtro cruzado (filtro cruzado)
+    function doubleFilter(array) {
+      let cardsChecked = filterArray(inputChecks, array);
+      let finalFilter = filterSearch(inputText, cardsChecked);
+      cardsCreate(finalFilter, "divContainerEvents");
+    }
   }
-
-  showCards(eventsFiltrados, "divContainerEvents")
+  catch (error) {
+    console.log(error);
+  }
 }
-verificarChequeado()
 
-// function filterArrayByArray(arrayStrings, arrayObjetos) {
-//   if(arrayStrings.length === 0) return arrayObjetos
-//   let newArray = arrayObjetos.filter(elemento => arrayStrings.includes(elemento.category))
-//   return newArray
-// }
+bringData();
 
-function showCards(array, idContainer) {
-  let container = document.getElementById(idContainer)
+// CREATE CARDS CON UNA FUNCIÓN
+
+const indexDate = Date.parse(data.currentDate);
+
+function cardsCreate(array, idContainer) {
+  let container = document.getElementById(idContainer);
   container.innerHTML = "";
-  const fragment = document.createDocumentFragment()
-  for (let elemento of array) {
-    let div = document.createElement('div')
-    div.className = 'card card-small'
-    div.style.width = '20rem'
-    div.innerHTML = `
-    <img src="${elemento.image}" class="card-img-top" alt="..." />
-       <div class="card-body">
-         <h5 class="card-title">${elemento.name}</h5>
-         <p class="card-text">
-           ${elemento.description}
-         </p>
-         <div class="price-and-button d-flex justify-content-between">
-           <p class="card-text">PRICE $ ${elemento.price}</p>
-           <a href="./details.html?_id=${elemento._id}" class="btn" style="background-color: #a493e6"><i>SEE MORE</i></i></a>
-         </div>
-    `
-    fragment.appendChild(div)
+  let fragment = document.createDocumentFragment();
+  if (array == '') {
+    container.innerHTML = `<h2 class="text-center3"> The Event no exist. I´m sorry</h2>`;
+  } else {
+    for (let event of array) {
+      let div = document.createElement("div");
+      div.classList.add(
+        "new-div",
+        "new-div2",
+        "d-flex",
+        "flex-column",
+        "col-10",
+        "col-sm-10",
+        "col-md-4",
+        "col-lg-3"
+      );
+      div.innerHTML = `<h2 class="text-center h2-radius">${event.name}</h2>
+                        <img class="h-75 img-cards" src="${event.image}" width="100%"></img>
+                        <p class="new-div">Summary of the event: ${event.description}</p>
+                        <div class="d-flex flex-column align-items-center"> 
+                        <p class="new-div">Event price: ${event.price} dollars</p>
+                        <a href="./details.html?_id=${event._id}" class="btn btn-outline-warning w-75 btn-details">Go to details ➔</a>
+                        </div>`;
+      fragment.appendChild(div);
+    }
+    container.appendChild(fragment);
   }
-  container.appendChild(fragment)
 }
 
-let inputForm = document.getElementById('inputForm')
-inputForm.addEventListener('keyup', (e) => {
-  console.log(inputForm.value)
-})
+// cardsCreate(data.events, "div-index");
+
+// FIN CREATE CARDS
+// ----------------------------------------------------------------------------------
+// CREACIÓN DE LOS CHECKBOXES (CATEGORIES) CON FUNCIÓN
+
+const cuadraditos = document.getElementById('cuadraditos');
+
+function checkboxCreate(array) {
+  let fragment = document.createDocumentFragment();
+  let mapping = array.map((element) => element.category);
+  let categories = [...new Set(mapping)]; // TE PASA EL SET A UN ARRAY
+  categories.forEach((category) => {
+    let div = document.createElement("div");
+    div.className = "form-check";
+    div.innerHTML = `
+                    <label class="form-check-label"> ${category}
+                    <input class="form-check-input" type="checkbox" value=${category} id=""/>
+                    </label>
+                    `;
+    fragment.appendChild(div);
+  });
+  return fragment;
+}
+
+// container2.appendChild(checkboxCreate(data.events));
+
+// FIN DE LOS CHECKBOXES (CATEGORIES) CON FUNCIÓN
+// ----------------------------------------------------------------------------------
+// TASK 3
+
+
+
+// FILTRADO DE LAS CARDS POR CATEGORYS (CHECKBOXES)
+
+// let checkboxes = document.querySelectorAll("input[type=checkbox]");
+
+// checkboxes.forEach((checkbox) => {
+//   checkbox.addEventListener("change", filterCheckbox);
+// });
+
+// function filterCheckbox() {
+//   inputChecks = Array.from(checkboxes)
+//     .filter((checkbox) => checkbox.checked)
+//     .map((value) => value.value);
+//   doubleFilter(data.events);
+// }
+
+function filterArray(arrayS, arrayCards) {
+  if (arrayS.length > 0) {
+    return arrayCards.filter((objeto) =>
+      arrayS.includes(objeto.category.split(" ").join("_"))
+    );
+  } else {
+    return arrayCards;
+  }
+}
+
+// FIN DEL FILTRADO [categories]
+// ----------------------------------------------------------------------------------
+// FILTRADO PERO POR EL BUSCADOR SEARCH
+
+// let searchNav = document.getElementById("searchNav");
+
+// searchNav.addEventListener("keyup", (e) => {
+//   inputText = e.target.value;
+//   doubleFilter(data.events);
+// });
+
+function filterSearch(value, arrayObject) {
+  if (value == "") return arrayObject;
+  let newArray = arrayObject.filter((elemento) =>
+    elemento.name.toLowerCase().includes(value.toLowerCase().trim())
+  );
+  return newArray;
+}
+// FIN FILTRADO PERO POR EL BUSCADOR SEARCH
+// ----------------------------------------------------------------------------------
+// FILTRADO DOBLE
+
+// function doubleFilter(array) {
+//   let cardsChecked = filterArray(inputChecks, array);
+//   let finalFilter = filterSearch(inputText, cardsChecked);
+//   cardsCreate(finalFilter, "div-index");
+// }
