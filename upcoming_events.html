@@ -44,108 +44,18 @@
     <!-- desde aqui los backgrounds y search  -->
 
     <div class="checks-and-search w-100">
-      <div class="below-bar-home">
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-          <label class="form-check-label" for="inlineCheckbox1">Category</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-          <label class="form-check-label" for="inlineCheckbox2">Category</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-          <label class="form-check-label" for="inlineCheckbox3">Category</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-          <label class="form-check-label" for="inlineCheckbox1">Category</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-          <label class="form-check-label" for="inlineCheckbox1">Category</label>
-        </div>
+      <div class="below-bar-home" id="checks">
+        
       </div>
       <div class="search-bar">
         <form class="col-4" role="search">
-          <input type="search" name="Search" class="form-control" placeholder="Search..." aria-label="Search">
+          <input type="search" name="Search" class="form-control" placeholder="Search..." aria-label="Search" id="searchNav">
           <label for="Search"><i class="bi bi-search"></i></label>
         </form>
       </div>
     </div>
 
     <!-- desde aqui las cards  -->
-<!-- 
-    <div class="cards-group-armado d-flex ">
-      <div class="card" style="width: 13rem;">
-        <img src="./assets/img/Cinema.jpg" class="card-img-top" alt="personas en el cine">
-        <div class="card-body">
-          <h5 class="card-title">CINEMA</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat alias aspernatur non, provident consequatur deserunt hic minus labore blanditiis ipsa!</p>
-          <div class="price-and-button d-flex justify-content-between">
-            <p class="card-text">PRICE $ 1200</p>
-            <a href="./details.html" class="btn" style="background-color: #a493e6"><i>VAMOS</i><i class="bi bi-camera-reels"></i></a>
-          </div>
-          
-        </div>
-      </div>
-      <div class="card" style="width: 13rem;">
-        <img src="./assets/img/Costume_Party.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">DISFRACES FEST</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat alias aspernatur non, provident consequatur deserunt hic minus labore blanditiis ipsa!</p>
-          <div class="price-and-button d-flex justify-content-between">
-            <p class="card-text">PRICE $ 1200</p>
-            <a href="./details.html" class="btn" style="background-color: #a493e6"><i>VAMOS</i><i class="bi bi-geo-alt"></i></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="card" style="width: 13rem;">
-        <img src="./assets/img/Food_Fair.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">FOOD FAIR</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat alias aspernatur non, provident consequatur deserunt hic minus labore blanditiis ipsa!</p>
-          <div class="price-and-button d-flex justify-content-between">
-            <p class="card-text">PRICE $ 3000</p>
-            <a href="./details.html" class="btn" style="background-color: #a493e6"><i>VAMOS</i><i class="bi bi-cup-hot"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="card" style="width: 13rem;">
-        <img src="./assets/img/Marathon.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">MARATHON</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat alias aspernatur non, provident consequatur deserunt hic minus labore blanditiis ipsa!</p>
-          <div class="price-and-button d-flex justify-content-between">
-            <p class="card-text">PRICE $ <br> 500</p>
-            <a href="./details.html" class="btn" style="background-color: #a493e6"><i>VAMOS</i><br><i class="bi bi-trophy"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="card" style="width: 13rem;">
-        <img src="./assets/img/Museum_Tour.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">MUSEUM TOUR</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat alias aspernatur non, provident consequatur deserunt hic minus labore blanditiis ipsa!</p>
-          <div class="price-and-button d-flex justify-content-between">
-            <p class="card-text">PRICE $ FREE</p>
-            <a href="./details.html" class="btn" style="background-color: #a493e6"><i>VAMOS</i><i class="bi bi-camera"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="card" style="width: 13rem;">
-        <img src="./assets/img/Music_Concert.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">MUSIC CONCERT</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat alias aspernatur non, provident consequatur deserunt hic minus labore blanditiis ipsa!</p>
-          <div class="price-and-button d-flex justify-content-between">
-            <p class="card-text">PRICE $ 5000</p>
-            <a href="./details.html" class="btn" style="background-color: #a493e6"><i>VAMOS</i><i class="bi bi-file-music"></i></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
- -->    
     <div id="div-container-events">
         <script src="event.js"></script>
         <script src="upcoming_events.js"></script>
